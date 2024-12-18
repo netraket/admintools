@@ -2,21 +2,10 @@
 // Temporary Backdoor: Strict Access Controls
 
 // Restrict Access by IP Address (optional, replace YOUR_IP_ADDRESS)
-$allowed_ips = ['YOUR_IP_ADDRESS']; // Add more IPs as needed
+$allowed_ips = ['128.76.169.10']; // Add more IPs as needed
 if (!in_array($_SERVER['REMOTE_ADDR'], $allowed_ips)) {
     http_response_code(403);
     die('Access Forbidden');
-}
-
-// Temporary Access Password
-$username = "admin"; // Change this to a secure username
-$password = "tempsecurepassword"; // Change this to a strong, unique password
-
-if (!isset($_SERVER['PHP_AUTH_USER']) || $_SERVER['PHP_AUTH_USER'] !== $username || $_SERVER['PHP_AUTH_PW'] !== $password) {
-    header('WWW-Authenticate: Basic realm="Temporary Access"');
-    header('HTTP/1.0 401 Unauthorized');
-    echo 'Unauthorized access.';
-    exit;
 }
 
 // File system root directory
